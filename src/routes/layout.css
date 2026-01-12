@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/letieu/terminal.css@v0.0.4/index.css');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import '../assets/_util.css';
+@import '../assets/_layout.css';
+
+/* In your custom stylesheet */
+
+:root {
+	/* Change primary color */
+	--primary: #00ff00;
+
+	/* Change background */
+	--terminal-bg: #0a0a0a;
+
+	/* Change font */
+	font-family: 'Courier New', monospace;
+
+	/* Other variables */
+	--terminal-fg: #f0f0f0;
+	--danger: #ff5555;
+	--success: #50fa7b;
+	--warning: #f1fa8c;
+	--info: #8be9fd;
+	--border-color: #333333;
+	--surface: #1a1a1a;
+	--muted: #6c757d;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: var(--terminal-bg);
+	color: var(--terminal-fg);
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 16px;
+	line-height: 1.5;
+	overflow: hidden;
+}
+
+/* TITLE (Bulma-style) */
+.title {
+	font-weight: bold;
+	color: var(--primary);
+	text-transform: uppercase;
+	margin-bottom: 16px;
+	letter-spacing: 1px;
+}
+
+.navbar-item {
+	transition:
+		color 0.3s ease-in,
+		transform 0.1s ease;
+	transform: translate(0, 0);
+}
+
+.navbar-item.active {
+	color: var(--primary);
+}
+
+.navbar-item:active {
+	transform: translate(-1px, 1px);
+	color: var(--info);
+}
+
+.showcase-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 0.5rem;
+	padding: 1rem;
+}
+
+.showcase-section {
+	background: var(--terminal-bg);
+	border: 1px solid var(--terminal-border);
+	padding: 0.5rem;
+	border-radius: 4px;
+}
+
+.showcase-header {
+	background: var(--terminal-bg);
+	border-bottom: 2px solid var(--terminal-primary);
+	padding: 2rem;
+	text-align: center;
+}
+
+@media (max-width: 1400px) {
+	.showcase-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 900px) {
+	.showcase-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.title.is-1 {
+	font-size: 2.5rem;
+	line-height: 1.1;
+}
+
+.title.is-2 {
+	font-size: 2rem;
+	line-height: 1.1;
+}
+
+.title.is-3 {
+	font-size: 1.75rem;
+	line-height: 1.2;
+}
+
+.title.is-4 {
+	font-size: 1.5rem;
+	line-height: 1.2;
+}
+
+.title.is-5 {
+	font-size: 1.25rem;
+	line-height: 1.3;
+}
+
+.title.is-6 {
+	font-size: 1rem;
+	line-height: 1.3;
+}
+
+.subtitle {
+	font-weight: normal;
+	color: var(--muted);
+	margin-bottom: 16px;
+}
+
+.subtitle.is-1 {
+	font-size: 2rem;
+}
+
+.subtitle.is-2 {
+	font-size: 1.75rem;
+}
+
+.subtitle.is-3 {
+	font-size: 1.5rem;
+}
+
+.subtitle.is-4 {
+	font-size: 1.25rem;
+}
+
+.subtitle.is-5 {
+	font-size: 1rem;
+}
+
+.subtitle.is-6 {
+	font-size: 0.875rem;
+}
+
+.terminal-x {
+	font-family: monospace;
+	white-space: pre-wrap;
+	background: #111;
+	color: #eee;
+	padding: 12px;
+	border: 1px solid #333;
+	width: 500px;
+	height: 300px;
+	overflow-y: auto;
+	scroll-behavior: smooth;
+}
