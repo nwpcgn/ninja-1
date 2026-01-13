@@ -156,6 +156,7 @@ body {
 a:hover {
 	text-decoration: none;
 }
+
 .img-grid {
 	--min: 68px;
 	--gap: 0.5rem;
@@ -351,6 +352,7 @@ dialog {
 	.nav.center {
 		justify-content: center;
 	}
+
 	.nav.wrap {
 		flex-wrap: wrap;
 	}
@@ -361,4 +363,20 @@ dialog {
 		flex-direction: column;
 		gap: var(--gap);
 	}
+}
+
+.button,
+button {
+	opacity: 0.5;
+	cursor: pointer;
+	transition: all 0.2s ease-in;
+}
+
+.button:disabled,
+button:disabled {
+	background-color: var(--surface);
+	color: var(--terminal-fg);
+	opacity: 0.3;
+	cursor: not-allowed;
+	border-color: var(--border-color);
 }

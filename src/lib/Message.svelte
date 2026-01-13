@@ -152,6 +152,16 @@
 				<div class="has-text-info">
 					<span>Cache</span><span>{log.cache}</span>
 				</div>
+				<input
+					type="text"
+					class="input"
+					placeholder="Enter username..."
+					value={Object.keys(fighter).join(', ')} />
+				<textarea
+					class="textarea"
+					rows="4"
+					placeholder="Enter message..."
+					style="resize: vertical">{JSON.stringify(fighter)}</textarea>
 			</div>
 
 			{#snippet fooBar()}

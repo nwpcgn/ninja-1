@@ -1,15 +1,16 @@
 <script lang="ts">
-	let { children, title, fooBar } = $props()
+	let { children, fooBar, topBar, title, className = '' } = $props()
 </script>
 
-<div class="card">
+<div class="card flex flex-col {className}">
 	{#if title}
-		<div class="card-header">
+		<div class="card-header split">
 			<h4 class="card-header-title">{title}</h4>
+			<span>{@render topBar?.()}</span>
 		</div>
 	{/if}
 
-	<div class="card-content">
+	<div class="card-content relative flex-1 overflow-hidden">
 		{@render children?.()}
 	</div>
 

@@ -1,122 +1,81 @@
 <script lang="ts">
 </script>
 
-<div id="loading-wrapper">
-	<div id="loading-text" class="slideInUp">LOADING</div>
-	<div id="loading-content" class="slideInUp"></div>
+<div class="loading-spinner">
+	<div css="loading-text">LOADING</div>
+	<div class="loader"></div>
 </div>
 
 <style>
-	@keyframes wipe-in-up {
-		from {
-			clip-path: inset(100% 0 0 0);
-		}
-		to {
-			clip-path: inset(0 0 0 0);
-		}
-	}
-
-	#loading-wrapper {
-		animation: 2.5s cubic-bezier(0.25, 1, 0.3, 1) wipe-in-up both;
-	}
-
-	#loading-wrapper {
-		background-color: #222;
+	.loading-spinner {
 		position: absolute;
+		top: 0;
+		left: 0;
 		width: 100%;
 		height: 100%;
-		left: 0;
-		top: 0;
+		display: grid;
+		place-content: center;
+		gap: 1rem;
+		background-color: oklch(14.479% 0.00002 271.152 / 0.7);
+		color: var(--terminal-fg);
+
+		.loader {
+			width: 48px;
+			height: 48px;
+			border-radius: 50%;
+			display: inline-block;
+			position: relative;
+			border: 3px solid;
+			border-color: #fff #fff transparent transparent;
+			box-sizing: border-box;
+			animation: rotation 1s linear infinite;
+		}
+
+		.loader::after,
+		.loader::before {
+			content: '';
+			box-sizing: border-box;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+			border: 3px solid;
+			border-color: transparent transparent #ff3d00 #ff3d00;
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			box-sizing: border-box;
+			animation: rotationBack 0.5s linear infinite;
+			transform-origin: center center;
+		}
+
+		.loader::before {
+			width: 32px;
+			height: 32px;
+			border-color: #fff #fff transparent transparent;
+			animation: rotation 1.5s linear infinite;
+		}
 	}
 
-	#loading-text {
-		display: block;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		color: #999;
-		width: 100px;
-		height: 30px;
-		margin: -7px 0 0 -45px;
-		text-align: center;
-		font-family: 'PT Sans Narrow', sans-serif;
-		font-size: 20px;
-	}
-
-	#loading-content {
-		display: block;
-		position: relative;
-		left: 50%;
-		top: 50%;
-		width: 170px;
-		height: 170px;
-		margin: -85px 0 0 -85px;
-		border: 3px solid #f00;
-	}
-
-	#loading-content:after {
-		content: '';
-		position: absolute;
-		border: 3px solid #0f0;
-		left: 15px;
-		right: 15px;
-		top: 15px;
-		bottom: 15px;
-	}
-
-	#loading-content:before {
-		content: '';
-		position: absolute;
-		border: 3px solid #00f;
-		left: 5px;
-		right: 5px;
-		top: 5px;
-		bottom: 5px;
-	}
-
-	#loading-content {
-		border: 3px solid transparent;
-		border-top-color: #4d658d;
-		border-bottom-color: #4d658d;
-		border-radius: 50%;
-		-webkit-animation: loader 2s linear infinite;
-		-moz-animation: loader 2s linear infinite;
-		-o-animation: loader 2s linear infinite;
-		animation: loader 2s linear infinite;
-	}
-
-	#loading-content:before {
-		border: 3px solid transparent;
-		border-top-color: #d4cc6a;
-		border-bottom-color: #d4cc6a;
-		border-radius: 50%;
-		-webkit-animation: loader 3s linear infinite;
-		-moz-animation: loader 2s linear infinite;
-		-o-animation: loader 2s linear infinite;
-		animation: loader 3s linear infinite;
-	}
-
-	#loading-content:after {
-		border: 3px solid transparent;
-		border-top-color: #84417c;
-		border-bottom-color: #84417c;
-		border-radius: 50%;
-		-webkit-animation: loader 1.5s linear infinite;
-		animation: loader 1.5s linear infinite;
-		-moz-animation: loader 2s linear infinite;
-		-o-animation: loader 2s linear infinite;
-	}
-
-	@keyframes loader {
+	@keyframes rotation {
 		0% {
-			-webkit-transform: rotate(0deg);
-			-ms-transform: rotate(0deg);
 			transform: rotate(0deg);
 		}
+
 		100% {
-			-webkit-transform: rotate(360deg);
-			-ms-transform: rotate(360deg);
 			transform: rotate(360deg);
+		}
+	}
+
+	@keyframes rotationBack {
+		0% {
+			transform: rotate(0deg);
+		}
+
+		100% {
+			transform: rotate(-360deg);
 		}
 	}
 </style>
