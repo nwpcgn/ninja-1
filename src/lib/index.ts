@@ -1,59 +1,30 @@
-// place files you want to import through the `$lib` alias in this folder.
-export const nav = [
-	{
-		href: '/',
-		name: 'Lobby',
-		icon: 'rpg-home',
-		slug: 'lobby'
-	},
-	{
-		href: '/dungeon',
-		name: 'Dungeon',
-		icon: 'rpg-navi',
-		slug: 'dungeon'
-	},
-	{
-		href: '/demo',
-		name: 'Arena',
-		icon: 'rpg-db',
-		slug: 'arena'
-	}
-]
-
 // @index('./utils/**/*.ts', (f, _) => `export { default as ${_.camelCase(f.name)} } from '${f.path}${f.ext}'`)
 export { default as assetLoader } from './utils/assetLoader.ts'
+export { default as getFighter } from './utils/getFighter.ts'
+export { default as getMsg } from './utils/getMsg.ts'
 export { default as groupBy } from './utils/groupBy.ts'
 export { default as loader } from './utils/Loader.ts'
 export { default as randNum } from './utils/randNum.ts'
+export { default as randRow } from './utils/randRow.ts'
 export { default as sleep } from './utils/sleep.ts'
 export { default as uuid } from './utils/uuid.ts'
 // @endindex
-// @index('./*.svelte', (f, _) => `export { default as ${_.pascalCase(f.name)} } from '${f.path}${f.ext}'`)
-
+// @index('./tui/*.svelte', (f, _) => `export { default as ${_.pascalCase(f.name)} } from '${f.path}${f.ext}'`)
+export { default as TuiBtn } from './tui/TuiBtn.svelte'
+export { default as TuiCard } from './tui/TuiCard.svelte'
+export { default as TuiCollapse } from './tui/TuiCollapse.svelte'
+export { default as TuiGrid } from './tui/TuiGrid.svelte'
+export { default as TuiGridSection } from './tui/TuiGridSection.svelte'
+export { default as TuiHeader } from './tui/TuiHeader.svelte'
+export { default as TuiNav } from './tui/TuiNav.svelte'
+export { default as TuiToster } from './tui/TuiToster.svelte'
 // @endindex
 // @index('./nes/**/*.svelte', (f, _) => `export { default as ${_.pascalCase(f.name)} } from '${f.path}${f.ext}'`)
 
 // @endindex
-// @index('./tui/*.svelte', (f, _) => `export { default as ${_.pascalCase(f.name)} } from '${f.path}${f.ext}'`)
-export { default as Toster } from './tui/Toster.svelte'
-export { default as TuiAccordion } from './tui/TuiAccordion.svelte'
-export { default as TuiAlert } from './tui/TuiAlert.svelte'
-export { default as TuiBreadcump } from './tui/TuiBreadcump.svelte'
-export { default as TuiBtn } from './tui/TuiBtn.svelte'
-export { default as TuiButton } from './tui/TuiButton.svelte'
-export { default as TuiCard } from './tui/TuiCard.svelte'
-export { default as TuiCollapse } from './tui/TuiCollapse.svelte'
-export { default as TuiColor } from './tui/TuiColor.svelte'
-export { default as TuiDropdown } from './tui/TuiDropdown.svelte'
-export { default as TuiForm } from './tui/TuiForm.svelte'
-export { default as TuiKbd } from './tui/TuiKbd.svelte'
-export { default as TuiList } from './tui/TuiList.svelte'
-export { default as TuiLog } from './tui/TuiLog.svelte'
-export { default as TuiMenu } from './tui/TuiMenu.svelte'
-export { default as TuiNavBar } from './tui/TuiNavBar.svelte'
-export { default as TuiProgress } from './tui/TuiProgress.svelte'
-export { default as TuiTable } from './tui/TuiTable.svelte'
-export { default as TuiTags } from './tui/TuiTags.svelte'
-export { default as TuiTypo } from './tui/TuiTypo.svelte'
-export { default as TuiUtils } from './tui/TuiUtils.svelte'
+// @index('./*.ts', (f, _) => `export { default as ${f.name} } from '${f.path}'`)
+export { default as atlas } from './atlas'
+export { default as getDungeonMap } from './getDungeonMap'
+export { default as nav } from './nav'
+export { default as typeList } from './typeList'
 // @endindex

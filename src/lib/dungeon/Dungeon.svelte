@@ -2,18 +2,18 @@
 	import * as ROT from 'rot-js'
 	let { children } = $props()
 	let element: HTMLDivElement = $state(null)
-	let settings = $state({
-		width: 50,
-		height: 40,
-		type: 'Uniform',
-		options: {
-			roomWidth: [4, 8] /* room minimum and maximum width */,
-			roomHeight: [4, 6] /* room minimum and maximum height */,
-			corridorLength: [3, 10] /* corridor minimum and maximum length */,
-			dugPercentage: 0.2 /* we stop after this percentage of level area has been dug out */,
-			timeLimit: 1000 /* we stop after this much time has passed (msec) */
-		}
-	})
+	// let settings = $state({
+	// 	width: 50,
+	// 	height: 40,
+	// 	type: 'Uniform',
+	// 	options: {
+	// 		roomWidth: [4, 8] /* room minimum and maximum width */,
+	// 		roomHeight: [4, 6] /* room minimum and maximum height */,
+	// 		corridorLength: [3, 10] /* corridor minimum and maximum length */,
+	// 		dugPercentage: 0.2 /* we stop after this percentage of level area has been dug out */,
+	// 		timeLimit: 1000 /* we stop after this much time has passed (msec) */
+	// 	}
+	// })
 	const displayOptions = {
 		bg: 'white',
 		fg: 'dimGrey',

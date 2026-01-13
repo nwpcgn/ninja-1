@@ -1,18 +1,20 @@
 <script lang="ts">
 	import { parseKey } from '$lib/atlas'
 	import getDungeonMap from '$lib/getDungeonMap'
-	import Slider from '$lib/Slider.svelte'
 	import {
 		TuiCard,
 		TuiCollapse,
 		TuiGrid,
 		TuiGridSection,
-		typeList,
+		TuiToster,
 		TuiHeader,
 		TuiNav,
 		TuiBtn
 	} from '$lib'
+	import { typeList } from '$lib/typeList'
+	import { nav } from '$lib/nav'
 
+	// const noreplace = ['.', '/', '+', 'S', '?', 'M']
 	class Entity {
 		x: number = $state(0)
 		y: number = $state(0)
@@ -81,9 +83,59 @@
 
 <section class="nwp page">
 	<article>
-		<TuiHeader title="Dungeon Roguelike"></TuiHeader>
-		<Slider></Slider>
+		<TuiHeader
+			title="terminal.css Component Library"
+			subtitle="Terminal-style components with Bulma naming conventions">
+			<TuiNav center wrap>
+				{#each typeList as { title, type } (type)}
+					<TuiBtn {type}>{title}</TuiBtn>
+				{/each}
+			</TuiNav>
+		</TuiHeader>
+		<TuiGrid>
+			<TuiGridSection title="Tui Card">
+				<div class="card">
+					<div class="card-header">
+						<p class="card-header-title">System Status</p>
+					</div>
+					<div class="card-content">
+						<p class="has-text-success mb-2">● CPU: 45%</p>
+						<p class="has-text-warning mb-2">● Memory: 78%</p>
+						<p class="has-text-info">● Disk: 62%</p>
+					</div>
+				</div>
+			</TuiGridSection>
 
+			<TuiGridSection title="Tui Card">
+				<div class="card">
+					<div class="card-header">
+						<p class="card-header-title">System Status</p>
+					</div>
+					<div class="card-content">
+						<p class="has-text-success mb-2">● CPU: 45%</p>
+						<p class="has-text-warning mb-2">● Memory: 78%</p>
+						<p class="has-text-info">● Disk: 62%</p>
+					</div>
+				</div>
+			</TuiGridSection>
+			<TuiGridSection title="Tui Card">
+				<div class="card">
+					<div class="card-header">
+						<p class="card-header-title">System Status</p>
+					</div>
+					<div class="card-content">
+						<div class="status-list">
+							<div><span>Key 1</span> <span>Value 1</span></div>
+							<div><span>Key 2</span> <span>Value 2</span></div>
+							<div><span>Key 3</span> <span>Value 3</span></div>
+							<div><span>Key 4</span> <span>Value 4</span></div>
+							<div><span>Key 5</span> <span>Value 5</span></div>
+							<div><span>Key 6</span> <span>Value 6</span></div>
+						</div>
+					</div>
+				</div>
+			</TuiGridSection>
+		</TuiGrid>
 		<TuiGrid>
 			<TuiCard>
 				<h4 class="card-header-title">Card + Foo Bar</h4>

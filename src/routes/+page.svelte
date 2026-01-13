@@ -1,29 +1,18 @@
 <script lang="ts">
+	import { parseKey } from '$lib/atlas'
+	import getDungeonMap from '$lib/getDungeonMap'
+	import Slider from '$lib/Slider.svelte'
 	import {
-		TuiAccordion,
-		TuiAlert,
-		TuiBreadcump,
-		TuiBtn,
 		TuiCard,
 		TuiCollapse,
-		TuiColor,
-		TuiDropdown,
-		TuiForm,
-		TuiKbd,
-		TuiList,
-		TuiLog,
-		TuiMenu,
-		TuiNavBar,
-		TuiProgress,
-		TuiTable,
-		TuiTags,
-		TuiTypo,
-		TuiUtils
+		TuiGrid,
+		TuiGridSection,
+		typeList,
+		TuiHeader,
+		TuiNav,
+		TuiBtn
 	} from '$lib'
-	import getDungeonMap from '$lib/getDungeonMap'
-	import { parseKey } from '$lib/atlas'
-	// const noreplace = ['.', '/', '+', 'S', '?', 'M']
-	let outElem: HTMLDivElement = $state(null)
+
 	class Entity {
 		x: number = $state(0)
 		y: number = $state(0)
@@ -90,23 +79,23 @@
 	init()
 </script>
 
+<svelte:head>
+	<title>Lobby</title>
+</svelte:head>
 <section class="nwp page">
 	<article>
-		<h1>Welcome to SvelteKit</h1>
-		<p>
-			Visit <em>svelte.dev/docs/kit</em> to read the documentation
-		</p>
+		<TuiHeader title="Dungeon Roguelike"></TuiHeader>
+		<Slider></Slider>
 	</article>
-	<div bind:this={outElem}></div>
 </section>
 <aside class="aside">
-	<section class="panel padded bg-base-300 w-68">
+	<!-- <section class="panel padded bg-base-300 w-68">
 		<header
-			class="padded rounded-box animate-in duration-500 fade-in zoom-in"
+			class="padded rounded-box animate-in fade-in zoom-in duration-500"
 			style="background-color: {player.bg}; color: {player.fg}">
 			<h2>{player?.char} {player?.name}</h2>
 			<h5>HP: {player?.hp}</h5>
 			<h5>XY: {player?.x}x{player?.y}</h5>
 		</header>
-	</section>
+	</section> -->
 </aside>

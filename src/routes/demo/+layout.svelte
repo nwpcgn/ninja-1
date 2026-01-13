@@ -1,28 +1,28 @@
 <script lang="ts">
 	import { page } from '$app/state'
-	import {
-		TuiAccordion,
-		TuiAlert,
-		TuiBreadcump,
-		TuiBtn,
-		TuiCard,
-		TuiCollapse,
-		TuiColor,
-		TuiDropdown,
-		TuiForm,
-		TuiKbd,
-		TuiList,
-		TuiLog,
-		TuiMenu,
-		TuiNavBar,
-		TuiProgress,
-		TuiTable,
-		TuiTags,
-		TuiTypo,
-		TuiUtils
-	} from '$lib'
-
-	let { data, children } = $props()
+	let { children } = $props()
+	const menu = [
+		{
+			href: '/demo',
+			name: 'Tui',
+			icon: 'rpg-server'
+		},
+		{
+			href: '/demo/toast',
+			name: 'Toast',
+			icon: 'rpg-server'
+		},
+		{
+			href: '/demo/faq',
+			name: 'Faq',
+			icon: 'rpg-tools'
+		},
+		{
+			href: '/demo/grid',
+			name: 'Grid',
+			icon: 'rpg-server'
+		}
+	]
 	let current = $derived(page.url.hash.replace('#', ''))
 </script>
 
@@ -31,7 +31,7 @@
 <aside class="aside">
 	<div class="menu">
 		<nav class="list">
-			{#each data?.menu as { name, href }, i (i)}
+			{#each menu as { name, href }, i (i)}
 				<li>
 					<a
 						href="#{href}"

@@ -1,7 +1,6 @@
 import * as ROT from 'rot-js'
 import generateMap from './generateMap'
 import type { DungeonMap } from './types'
-import { sym, atlasA } from './atlas'
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 const key = (x, y) => `${x},${y}`
 const walkable = ['x', '.', '+', 's', '_', '?', 'M']
@@ -116,20 +115,20 @@ const displayOptions = {
 	forceSquareRatio: true
 }
 
-class Game {
-	win = $state(false)
-	display = $state(null)
-	dungeon = $state(null)
+// class Game {
+// 	win = $state(false)
+// 	display = $state(null)
+// 	dungeon = $state(null)
 
-	async init(elem) {
-		await sleep(500)
-		this.dungeon = new Dungeon()
-		this.display = new ROT.Display(displayOptions)
-		elem.appendChild(this.display.getContainer())
-		this.display.clear()
-		// this.createLevel();
-		// this.player.init();
-		// this.engine();
-		// this.draw();
-	}
-}
+// 	async init(elem) {
+// 		await sleep(500)
+// 		this.dungeon = new Dungeon()
+// 		this.display = new ROT.Display(displayOptions)
+// 		elem.appendChild(this.display.getContainer())
+// 		this.display.clear()
+// 		// this.createLevel();
+// 		// this.player.init();
+// 		// this.engine();
+// 		// this.draw();
+// 	}
+// }

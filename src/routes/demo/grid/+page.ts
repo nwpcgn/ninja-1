@@ -2,6 +2,6 @@ import type { PageLoad } from './$types'
 
 export const load = (async () => {
 	return {
-		title: 'Tui Components'
+		title: 'Tui Grid'
 	}
 }) satisfies PageLoad

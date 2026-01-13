@@ -83,3 +83,4 @@ export const randNum = (min = 0, max = 1) => {
 	return Math.floor(Math.random() * (max - min)) + min
 }
 export const getKey = (x, y) => `${x},${y}`
+export default atlas

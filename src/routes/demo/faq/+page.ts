@@ -2,7 +2,7 @@ import type { PageLoad } from './$types'
 
 export const load = (async () => {
 	return {
-		title: 'FAQ / Accordion',
+		title: 'Tui FAQ',
 		faqData: [
 			{
 				id: '1',

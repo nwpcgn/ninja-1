@@ -13,7 +13,7 @@
 	import { slide } from 'svelte/transition'
 	import { onMount } from 'svelte'
 
-	let { id, frage, antwort, active = $bindable(false) } = $props()
+	let { frage, antwort, active = $bindable(false) } = $props()
 
 	let elem = $state()
 
