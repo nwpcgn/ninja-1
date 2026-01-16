@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Notable&family=Press+Start+2P&display=swap');
-@import url('https://cdn.jsdelivr.net/gh/letieu/terminal.css@v0.0.4/index.css');
+/* @import url('https://cdn.jsdelivr.net/gh/letieu/terminal.css@v0.0.4/index.css'); */
+@import url('./tui.css');
 @import 'tailwindcss';
 
 :root {
@@ -57,7 +58,7 @@ body {
 
 /* --------------------------------- Layout --------------------------------- */
 
-@layer base, components, utilities;
+@layer base, section, components, utilities;
 
 body {
 	width: 100vw;
@@ -367,7 +368,7 @@ dialog {
 
 .button,
 button {
-	opacity: 0.5;
+	opacity: 0.3;
 	cursor: pointer;
 	transition: all 0.2s ease-in;
 }
@@ -379,4 +380,107 @@ button:disabled {
 	opacity: 0.3;
 	cursor: not-allowed;
 	border-color: var(--border-color);
+}
+
+.gb-screen {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 1fr;
+    gap: var(--spacing-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.gb-screen>section {
+    width: 512px;
+    height: 512px;
+    aspect-ratio: 1/1;
+}
+
+.gb-screen>aside {
+    width: 0px;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.4s ease-out, width 0.4s ease-out 0.35s;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-base);
+}
+
+.gb-screen>aside.active {
+    opacity: 1;
+    width: 250px;
+    transition: width 0.4s ease-in, opacity 0.4s ease-in 0.35s;
+}
+
+.gb-card {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.gb-aside {
+    margin-bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.gb-bar {
+    position: relative;
+    overflow: hidden;
+    background: var(--terminal-bg);
+    border-bottom: 2px solid var(--terminal-primary);
+}
+
+.gb-card .card-content {
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.gb-fighter {
+    text-transform: capitalize;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+}
+
+.gb-compact .sec {
+    display: none;
+}
+
+.gb-compact.gb-fighter {
+    height: 33%;
+}
+
+.gb-fighter hr {
+    --border-color: var(--primary);
+    border-top-width: 2px;
+    border-top-style: solid;
+}
+
+.page-animate {
+    z-index: -1;
+    opacity: 0;
+    overflow: hidden;
+    transform: scale(0.5, 0.5);
+    transition: opacity 0.4s ease-out, transform 0.2s ease 0.2s;
+}
+
+.page-animate.active {
+    opacity: 1;
+    resize: vertical;
+    overflow: hidden;
+    transform: scale(1, 1);
+    transition: transform 0.4s ease, opacity 0.4s ease-in;
+    z-index: 1;
 }

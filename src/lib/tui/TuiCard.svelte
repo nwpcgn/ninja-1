@@ -2,15 +2,19 @@
 	let { children, fooBar, topBar, title, className = '' } = $props()
 </script>
 
-<div class="card flex flex-col {className}">
+<div class="card {className}">
 	{#if title}
-		<div class="card-header split">
+		<div class="card-header">
 			<h4 class="card-header-title">{title}</h4>
 			<span>{@render topBar?.()}</span>
 		</div>
+	{:else if topBar}
+		<div class="card-header">
+			{@render topBar?.()}
+		</div>
 	{/if}
 
-	<div class="card-content relative flex-1 overflow-hidden">
+	<div class="card-content">
 		{@render children?.()}
 	</div>
 

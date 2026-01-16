@@ -1,0 +1,90 @@
+	class BattleSystem {
+		// Schadensberechnung unter Einbeziehung von atc und def
+		private calculateDamage(
+			attacker: FighterType,
+			move: Move,
+			defender: FighterType
+		): number {
+			const rawDamage = move.damage + attacker.atc
+			const mitigation = Math.floor(defender.def / 2)
+			return Math.max(1, rawDamage - mitigation)
+		}
+
+		private checkHit(move: Move): boolean {
+			const roll = Math.floor(Math.random() * 10) + 1
+			return roll <= move.dice // Nutzt den dice-Wert als Trefferchance
+		}
+
+		public executeTurn(
+			player: FighterType,
+			moveIndex: number,
+			opponent: FighterType
+		) {
+			console.log(
+				`--- ${player.name} (Lvl ${player.level}) vs. ${opponent.name} ---`
+			)
+
+			// Spieler-Zug
+			this.performAttack(player, player.moves[moveIndex], opponent)
+
+			if (opponent.hp <= 0) {
+				console.log(`${opponent.name} wurde besiegt!`)
+				this.gainExperience(player, 50) // Spieler erhält XP
+				return
+			}
+
+			// Gegner-Zug (KI)
+			const randomMove =
+				opponent.moves[Math.floor(Math.random() * opponent.moves.length)]
+			this.performAttack(opponent, randomMove, player)
+
+			if (player.hp <= 0) {
+				console.log(`${player.name} ist KO gegangen!`)
+			}
+		}
+
+		private performAttack(
+			attacker: FighterType,
+			move: Move,
+			defender: FighterType
+		) {
+			console.log(`${attacker.name} nutzt ${move.name}!`)
+			if (this.checkHit(move)) {
+				const dmg = this.calculateDamage(attacker, move, defender)
+				defender.hp -= dmg
+				console.log(
+					`Treffer! ${dmg} Schaden. ${defender.name} verbleibende HP: ${Math.max(0, defender.hp)}`
+				)
+			} else {
+				console.log(`${attacker.name} hat verfehlt!`)
+			}
+		}
+
+		// Level-Up Logik
+		private gainExperience(fighter: FighterType, amount: number) {
+			fighter.xp += amount
+			console.log(`${fighter.name} erhält ${amount} XP.`)
+
+			const xpToNextLevel = fighter.level * 100
+			if (fighter.xp >= xpToNextLevel) {
+				this.levelUp(fighter)
+			}
+		}
+
+		private levelUp(fighter: FighterType) {
+			fighter.level++
+			fighter.xp = 0
+			// Statuswerte erhöhen sich beim Level-Up
+			fighter.maxHp += 10
+			fighter.hp = fighter.maxHp // Vollständige Heilung
+			fighter.atc += 2
+			fighter.def += 1
+
+			console.log(
+				`✨ LEVEL UP! ${fighter.name} ist jetzt Level ${fighter.level}!`
+			)
+			console.log(
+				`Stats erhöht: HP: ${fighter.maxHp}, ATC: ${fighter.atc}, DEF: ${fighter.def}`
+			)
+		}
+	}

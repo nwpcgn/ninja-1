@@ -1,6 +1,6 @@
 <script lang="ts">
+	import sleep from '$lib/utils/sleep'
 	let { text = '' } = $props()
-
 	function typewriter(node, { speed = 1 }) {
 		const valid =
 			node.childNodes.length === 1 &&
@@ -23,8 +23,17 @@
 			}
 		}
 	}
+	let message = $state('')
+
+	$effect(() => {
+		if (text) {
+			sleep(100).then(() => {
+				message = text
+			})
+		}
+	})
 </script>
 
-{#key text}
-	<div in:typewriter>{text}</div>
+{#key message}
+	<div in:typewriter>{message}</div>
 {/key}

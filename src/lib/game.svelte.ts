@@ -39,4 +39,63 @@ export class Fighter {
 		this.moves = obj.moves
 		this.xp = 0
 	}
+
+	takeDamage(damage: number) {
+		this.hp = Math.max(0, this.hp - damage)
+	}
+	isAlive() {
+		return this.hp > 0
+	}
 }
+
+class Player {
+	hero: FighterType = $state(null)
+	constructor() {
+		this.init()
+	}
+
+	init() {
+		this.hero = new Fighter(getFighter())
+	}
+}
+
+export const player = new Player(getFighter())
+
+export const viewMap = {
+	select: {
+		slug: 'select',
+		badge: 'Hero',
+		title: 'Select your Hero'
+	},
+	find: {
+		slug: 'find',
+		badge: 'Monster',
+		title: 'Find an Opponent'
+	},
+	battle: {
+		slug: 'battle',
+		badge: 'Battle',
+		title: 'Battle Ground'
+	},
+	result: {
+		slug: 'result',
+		badge: 'Result',
+		title: 'Fight Ended'
+	}
+}
+class View {
+	slugs = $state.raw(Object.keys(viewMap))
+	views = $state.raw(Object.values(viewMap))
+	#current = $state(Object.keys(viewMap)[0])
+	view = $derived(viewMap[this.#current])
+	get current() {
+		return this.#current
+	}
+	set current(value: string) {
+		if (this.slugs.includes(value)) {
+			this.#current = value
+		}
+	}
+}
+
+export const view = new View()

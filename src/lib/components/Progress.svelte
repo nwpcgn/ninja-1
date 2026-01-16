@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Tween } from 'svelte/motion'
 	import { cubicOut } from 'svelte/easing'
+	import sleep from '$lib/utils/sleep'
 	let { value = 0, max = 1, label = '', blank = false } = $props()
 	let progress = new Tween(0, {
 		duration: 800,
@@ -10,7 +11,9 @@
 	let pw = $derived(Math.floor((progress.current / max) * 100))
 	$effect(() => {
 		if (value) {
-			progress.target = value
+			sleep(100).then(() => {
+				progress.target = value
+			})
 		}
 	})
 </script>

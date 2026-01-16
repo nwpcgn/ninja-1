@@ -9,7 +9,6 @@
 	let {
 		blank = false,
 		hide = false,
-		battle = false,
 		className = '',
 		fighter = {
 			name: 'Neon',
@@ -36,9 +35,6 @@
 			]
 		}
 	} = $props()
-	
-
-
 </script>
 
 {#if !blank}

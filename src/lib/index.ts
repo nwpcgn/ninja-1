@@ -24,7 +24,6 @@ export { default as TuiToster } from './tui/TuiToster.svelte'
 // @endindex
 // @index('./*.ts', (f, _) => `export { default as ${f.name} } from '${f.path}'`)
 export { default as atlas } from './atlas'
-export { default as getDungeonMap } from './getDungeonMap'
 export { default as nav } from './nav'
 export { default as typeList } from './typeList'
 // @endindex

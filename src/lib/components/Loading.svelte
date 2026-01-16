@@ -2,7 +2,6 @@
 </script>
 
 <div class="loading-spinner">
-	<div css="loading-text">LOADING</div>
 	<div class="loader"></div>
 </div>
 
@@ -16,7 +15,7 @@
 		display: grid;
 		place-content: center;
 		gap: 1rem;
-		background-color: oklch(14.479% 0.00002 271.152 / 0.7);
+		background-color: oklch(0% 0 0 / 0.8);
 		color: var(--terminal-fg);
 
 		.loader {
