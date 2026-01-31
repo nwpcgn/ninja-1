@@ -1,0 +1,177 @@
+[
+	{
+		"name": "rpg-enemy",
+		"title": "Enemy",
+		"group": "ctrl"
+	},
+	{
+		"name": "rpg-navi",
+		"title": "Navi",
+		"group": "ctrl"
+	},
+	{
+		"name": "rpg-player",
+		"title": "Player",
+		"group": "ctrl"
+	},
+	{
+		"name": "rpg-size",
+		"title": "Size",
+		"group": "ctrl"
+	},
+	{
+		"name": "rpg-tools",
+		"title": "Tools",
+		"group": "ctrl"
+	},
+	{
+		"name": "rpg-user",
+		"title": "User",
+		"group": "ctrl"
+	},
+	{
+		"name": "rpg-refresh",
+		"title": "Refresh",
+		"group": "editor"
+	},
+	{
+		"name": "rpg-add",
+		"title": "Add",
+		"group": "editor"
+	},
+	{
+		"name": "rpg-delete",
+		"title": "Delete",
+		"group": "editor"
+	},
+	{
+		"name": "rpg-edit",
+		"title": "Edit",
+		"group": "editor"
+	},
+	{
+		"name": "rpg-info",
+		"title": "Info",
+		"group": "msg"
+	},
+	{
+		"name": "rpg-warning",
+		"title": "Warning",
+		"group": "msg"
+	},
+	{
+		"name": "rpg-back",
+		"title": "Back",
+		"group": "pkmn"
+	},
+	{
+		"name": "rpg-blank",
+		"title": "Blank",
+		"group": "pkmn"
+	},
+	{
+		"name": "rpg-close",
+		"title": "Close",
+		"group": "pkmn"
+	},
+	{
+		"name": "rpg-favicon",
+		"title": "Favicon",
+		"group": "pkmn"
+	},
+	{
+		"name": "rpg-height",
+		"title": "Height",
+		"group": "pkmn"
+	},
+	{
+		"name": "rpg-hp",
+		"title": "Hp",
+		"group": "pkmn"
+	},
+	{
+		"name": "rpg-left",
+		"title": "Left",
+		"group": "pkmn"
+	},
+	{
+		"name": "rpg-level",
+		"title": "Level",
+		"group": "pkmn"
+	},
+	{
+		"name": "rpg-pokeball",
+		"title": "Pokeball",
+		"group": "pkmn"
+	},
+	{
+		"name": "rpg-right",
+		"title": "Right",
+		"group": "pkmn"
+	},
+	{
+		"name": "rpg-search",
+		"title": "Search",
+		"group": "pkmn"
+	},
+	{
+		"name": "rpg-skull",
+		"title": "Skull",
+		"group": "pkmn"
+	},
+	{
+		"name": "rpg-sort",
+		"title": "Sort",
+		"group": "pkmn"
+	},
+	{
+		"name": "rpg-tag",
+		"title": "Tag",
+		"group": "pkmn"
+	},
+	{
+		"name": "rpg-weight",
+		"title": "Weight",
+		"group": "pkmn"
+	},
+	{
+		"name": "rpg-archive",
+		"title": "Archive",
+		"group": "rpg"
+	},
+	{
+		"name": "rpg-bar",
+		"title": "Bar",
+		"group": "rpg"
+	},
+	{
+		"name": "rpg-db",
+		"title": "Db",
+		"group": "rpg"
+	},
+	{
+		"name": "rpg-game",
+		"title": "Game",
+		"group": "rpg"
+	},
+	{
+		"name": "rpg-home",
+		"title": "Home",
+		"group": "rpg"
+	},
+	{
+		"name": "rpg-server",
+		"title": "Server",
+		"group": "rpg"
+	},
+	{
+		"name": "rpg-text_format",
+		"title": "TextFormat",
+		"group": "rpg"
+	},
+	{
+		"name": "rpg-tiles",
+		"title": "Tiles",
+		"group": "rpg"
+	}
+]

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Tween } from 'svelte/motion'
 	import { cubicOut } from 'svelte/easing'
-	import sleep from '$lib/utils/sleep'
+	import sleep from '..//utils/sleep'
 	let { value = 0, max = 1, label = '', blank = false } = $props()
 	let progress = new Tween(0, {
 		duration: 800,

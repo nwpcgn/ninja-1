@@ -1,101 +1,94 @@
-import type { FighterType, Move } from './types'
-import getFighter from './utils/getFighter'
-export const blankFighter = {
-	id: '',
-	name: ' ',
-	info: ' ',
-	hp: 0,
-	atc: 0,
-	def: 0,
-	level: 0,
-	img: 'https://i.imgur.com/y2HlfrZ.png',
-	avatar: 'https://i.imgur.com/by2a1zX.png',
-	moves: [{ name: ' ', dice: 0, damage: 0, info: ' ' }]
-}
-export class Fighter {
-	id: string = $state('')
-	name: string = $state('')
-	info: string = $state('')
-	hp: number = $state(0)
-	maxHp: number = $state(0)
-	atc: number = $state(0)
-	def: number = $state(0)
-	level: number = $state(0)
-	img: string = $state('https://i.imgur.com/rylze1Q.png')
-	avatar: string = $state('https://i.imgur.com/msl9MJN.png')
-	moves: Move[] = $state([])
-	xp: number = $state(0)
-	constructor(obj: FighterType) {
-		this.id = obj.id
-		this.name = obj.name
-		this.info = obj.info
-		this.maxHp = obj.hp
-		this.hp = this.maxHp
-		this.atc = obj.atc
-		this.def = obj.def
-		this.level = obj.level
-		this.img = obj.img
-		this.avatar = obj.avatar
-		this.moves = obj.moves
-		this.xp = 0
-	}
+import * as PIXI from 'pixi.js'
+import { SvelteSet } from 'svelte/reactivity'
+export class GameState {
+	width = 60
+	height = 40
 
-	takeDamage(damage: number) {
-		this.hp = Math.max(0, this.hp - damage)
-	}
-	isAlive() {
-		return this.hp > 0
-	}
-}
+	// States
+	player = $state({ x: 0, y: 0 })
+	map = $state<number[][]>([])
+	explored = $state<boolean[][]>([])
+	items = $state<any[]>([])
+	visibleTiles = $state(new SvelteSet<string>())
+	monsters = $state<Entity[]>([])
 
-class Player {
-	hero: FighterType = $state(null)
 	constructor() {
-		this.init()
-	}
-
-	init() {
-		this.hero = new Fighter(getFighter())
-	}
-}
-
-export const player = new Player(getFighter())
-
-export const viewMap = {
-	select: {
-		slug: 'select',
-		badge: 'Hero',
-		title: 'Select your Hero'
-	},
-	find: {
-		slug: 'find',
-		badge: 'Monster',
-		title: 'Find an Opponent'
-	},
-	battle: {
-		slug: 'battle',
-		badge: 'Battle',
-		title: 'Battle Ground'
-	},
-	result: {
-		slug: 'result',
-		badge: 'Result',
-		title: 'Fight Ended'
-	}
-}
-class View {
-	slugs = $state.raw(Object.keys(viewMap))
-	views = $state.raw(Object.values(viewMap))
-	#current = $state(Object.keys(viewMap)[0])
-	view = $derived(viewMap[this.#current])
-	get current() {
-		return this.#current
-	}
-	set current(value: string) {
-		if (this.slugs.includes(value)) {
-			this.#current = value
+		// Initialisiere leere Grids
+		for (let y = 0; y < this.height; y++) {
+			this.map[y] = new Array(this.width).fill(1)
+			this.explored[y] = new Array(this.width).fill(false)
 		}
 	}
+
+	isWalkable(x: number, y: number) {
+		if (y < 0 || y >= this.height || x < 0 || x >= this.width) return false
+		return this.map[y][x] === 0
+	}
+
+	// Hilfsfunktion: Ist ein Feld durch ein Monster blockiert?
+	isOccupied(x: number, y: number) {
+		return this.monsters.some((m) => m.x === x && m.y === y)
+	}
+
+	movePlayer(x: number, y: number) {
+		this.player.x = x
+		this.player.y = y
+	}
 }
 
-export const view = new View()
+export const game = new GameState()
+
+export class Entity {
+	x = $state(0)
+	y = $state(0)
+	hp = $state(10)
+	name: string
+	sprite: PIXI.Graphics
+
+	constructor(
+		x: number,
+		y: number,
+		name: string,
+		color: number,
+		world: PIXI.Container,
+		tileSize: number
+	) {
+		this.x = x
+		this.y = y
+		this.name = name
+
+		// Visuelle Darstellung in Pixi
+		this.sprite = new PIXI.Graphics()
+		this.sprite.circle(tileSize / 2, tileSize / 2, tileSize / 3)
+		this.sprite.fill(color)
+		this.sprite.x = x * tileSize
+		this.sprite.y = y * tileSize
+		this.sprite.visible = false // Startet im Nebel
+		world.addChild(this.sprite)
+	}
+
+	// Einfache KI: Bewege dich auf den Spieler zu
+	updateAI() {
+		const dx = Math.sign(game.player.x - this.x)
+		const dy = Math.sign(game.player.y - this.y)
+
+		const nextX = this.x + dx
+		const nextY = this.y + dy
+
+		// Nur bewegen, wenn das Feld frei ist und kein Spieler dort steht
+		if (
+			game.isWalkable(nextX, nextY) &&
+			!(nextX === game.player.x && nextY === game.player.y)
+		) {
+			this.x = nextX
+			this.y = nextY
+			this.syncSprite()
+		}
+	}
+
+	syncSprite() {
+		// Hier könnten wir später eine Animation einbauen
+		this.sprite.x = this.x * 32
+		this.sprite.y = this.y * 32
+	}
+}

@@ -36,9 +36,6 @@
 			]
 		}
 	} = $props()
-	
-
-
 </script>
 
 {#if !blank}

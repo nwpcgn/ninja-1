@@ -1,5 +1,5 @@
 <script lang="ts">
-	import sleep from '$lib/utils/sleep'
+	import sleep from '../utils/sleep'
 	let { text = '' } = $props()
 	function typewriter(node, { speed = 1 }) {
 		const valid =
