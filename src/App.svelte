@@ -7,7 +7,7 @@
 	import Sprites from './lib/components/sprites/sprites.svelte'
 	import SideNav from './lib/components/SideNav.svelte'
 	import Page from './lib/components/Page.svelte'
-	import Dungeon2 from './Dungeon2.svelte'
+	import Dungeon from './game/Dungeon.svelte'
 	let current = $derived(location.url.hash.replace('#', ''))
 </script>
 
@@ -24,7 +24,7 @@
 				</Page>
 			</Route>
 			<Route key="dungeon" path="/dungeon">
-				<Dungeon2></Dungeon2>
+				<Dungeon></Dungeon>
 			</Route>
 			<Route key="arena" path="/arena">
 				<Dungeon1></Dungeon1>

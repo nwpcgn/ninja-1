@@ -5,11 +5,11 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
+		"format": "prettier --write .",
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json",
-		"lint": "prettier --check . && eslint .",
-		"format": "prettier --write ."
+		"lint": "prettier --check . && eslint ."
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.4.0",
@@ -34,10 +34,7 @@
 		"vite": "^7.3.1"
 	},
 	"dependencies": {
-		"@jsrob/svelte-portal": "^0.2.1",
 		"@svelte-router/core": "^1.0.7",
-		"kaplay": "^3001.0.19",
-		"kontra": "^10.0.2",
 		"pixi.js": "^8.15.0",
 		"rot-js": "^2.2.1",
 		"svelte-asciiart": "^0.0.5"

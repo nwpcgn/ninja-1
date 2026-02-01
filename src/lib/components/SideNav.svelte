@@ -10,11 +10,10 @@
 			<a
 				href="#{href}"
 				class="nav ease transition-all duration-150"
-				class:text-terminal-text={current === href}>
+				class:text-terminal-text={current !== href}>
 				{@render iconT(icon)}
 				<span class="flex-1">{name}</span>
-				<span class="bg-terminal-info px-2 py-1 text-xs text-terminal-dark"
-					>{i + 1}</span>
+				<span class="px-2 py-1 text-xs">{i + 1}</span>
 			</a>
 		{/each}
 	</nav>
